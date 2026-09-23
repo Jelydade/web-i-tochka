@@ -10,7 +10,12 @@ total.textContent = String(slides.length).padStart(2, '0');
 
 function showSlide(nextIndex) {
   index = (nextIndex + slides.length) % slides.length;
-  track.style.transform = `translateX(-${index * 100}%)`;
+  slides.forEach((slide, slideIndex) => {
+    const isActive = slideIndex === index;
+    slide.classList.toggle('is-active', isActive);
+    slide.setAttribute('aria-hidden', String(!isActive));
+    slide.inert = !isActive;
+  });
   current.textContent = String(index + 1).padStart(2, '0');
 }
 
@@ -28,3 +33,5 @@ track.addEventListener('touchend', (event) => {
   const distance = event.changedTouches[0].clientX - touchStart;
   if (Math.abs(distance) > 50) showSlide(index + (distance < 0 ? 1 : -1));
 }, { passive: true });
+
+showSlide(0);
