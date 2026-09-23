@@ -1,0 +1,7 @@
+.slider { padding: 0 0 90px; }
+.slider-track { width: 90%; margin: 0 5%; }
+
+@media (max-width: 640px) {
+  .slider { padding: 0 0 65px; }
+  .slider-track { width: 88%; margin: 0 6%; }
+}
