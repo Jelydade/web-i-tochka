@@ -43,19 +43,7 @@
       text-transform: uppercase;
     }
     .faq summary span { transition: color .3s ease, transform .35s cubic-bezier(.22, .8, .3, 1); }
-    .faq details > p {
-      display: block;
-      max-height: 0;
-      margin: -5px 45px 0 0;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(-8px);
-      transition: max-height .45s cubic-bezier(.22, .8, .3, 1), margin-bottom .45s cubic-bezier(.22, .8, .3, 1), opacity .25s ease, transform .35s ease;
-    }
-    .faq details[open] > p { max-height: 220px; margin-bottom: 25px; opacity: 1; transform: translateY(0); }
-    @media (max-width: 640px) {
-      .faq details > p { margin-right: 20px; }
-    }
+    .faq details.is-closing summary span { color: var(--blue); transform: rotate(0); }
     .header nav a:last-child .brand-mark,
     .hero .button .brand-mark,
     .submit-button .brand-mark { --mark-main: #ff9f1c; --mark-soft: #9ca9ff; }

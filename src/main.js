@@ -197,3 +197,58 @@ previews.forEach((preview) => {
     }
   });
 });
+
+document.querySelectorAll('.faq details').forEach((item) => {
+  const summary = item.querySelector('summary');
+  let animation = null;
+  let isClosing = false;
+  let isExpanding = false;
+
+  const finishAnimation = (open) => {
+    item.open = open;
+    item.classList.remove('is-closing');
+    item.style.height = '';
+    item.style.overflow = '';
+    animation = null;
+    isClosing = false;
+    isExpanding = false;
+  };
+
+  const shrink = () => {
+    isClosing = true;
+    isExpanding = false;
+    item.classList.add('is-closing');
+    const startHeight = `${item.offsetHeight}px`;
+    const endHeight = `${summary.offsetHeight}px`;
+    animation?.cancel();
+    animation = item.animate({ height: [startHeight, endHeight] }, {
+      duration: 380,
+      easing: 'cubic-bezier(.22, .8, .3, 1)',
+    });
+    animation.onfinish = () => finishAnimation(false);
+    animation.oncancel = () => { isClosing = false; };
+  };
+
+  const expand = () => {
+    isExpanding = true;
+    isClosing = false;
+    item.classList.remove('is-closing');
+    const startHeight = `${item.offsetHeight}px`;
+    item.open = true;
+    const endHeight = `${item.offsetHeight}px`;
+    animation?.cancel();
+    animation = item.animate({ height: [startHeight, endHeight] }, {
+      duration: 420,
+      easing: 'cubic-bezier(.22, .8, .3, 1)',
+    });
+    animation.onfinish = () => finishAnimation(true);
+    animation.oncancel = () => { isExpanding = false; };
+  };
+
+  summary.addEventListener('click', (event) => {
+    event.preventDefault();
+    item.style.overflow = 'hidden';
+    if (item.open && !isClosing) shrink();
+    else expand();
+  });
+});
