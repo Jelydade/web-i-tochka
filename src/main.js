@@ -64,6 +64,7 @@ function showPromo(promo) {
     promoStatus.textContent = `Скидка ${promo.discountPercent}% применена до ${expiresAt}.`;
     promoStatus.classList.remove('is-error');
     promoForm.querySelector('[data-promo-reset]').hidden = false;
+    promoForm.querySelector('.promo-submit').classList.add('is-clicked');
   });
   setPromoDiscount(promo);
 }
@@ -76,6 +77,7 @@ function clearPromo() {
     promoStatus.textContent = '';
     promoStatus.classList.remove('is-error');
     promoForm.querySelector('[data-promo-reset]').hidden = true;
+    promoForm.querySelector('.promo-submit').classList.remove('is-clicked');
   });
   setPromoDiscount(null);
 }
@@ -112,10 +114,12 @@ promoForms.forEach((promoForm) => {
 
   promoCode.addEventListener('input', () => {
     promoCode.value = promoCode.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 5);
+    promoForm.querySelector('.promo-submit').classList.remove('is-clicked');
   });
 
   promoForm.addEventListener('submit', async (event) => {
     event.preventDefault();
+    promoForm.querySelector('.promo-submit').classList.add('is-clicked');
     const code = promoCode.value.trim();
 
     if (!/^[A-Z0-9]{5}$/.test(code)) {
