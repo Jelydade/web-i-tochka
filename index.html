@@ -11,9 +11,24 @@
   <link rel="stylesheet" href="./src/portfolio-page.css">
   <link rel="stylesheet" href="./src/teaser-redesign.css">
   <link rel="stylesheet" href="./src/form.css">
+  <style>
+    .header .logo-brand-mark {
+      --mark-main: var(--blue);
+      --mark-soft: #c7cffc;
+      display: inline-block;
+      width: 17px;
+      height: 17px;
+      margin: 0 9px 0 0;
+      vertical-align: -2px;
+      animation: brand-pixel-loader 4s steps(1, end) infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .header .logo-brand-mark { animation: none; }
+    }
+  </style>
 </head>
 <body>
-  <header class="header"><a class="logo" href="#home" aria-label="WEB точка — главная">WEB <span>точка</span><i class="logo-pixel" aria-hidden="true"></i><small>веб-студия</small></a><nav aria-label="Навигация"><a href="./works.html">Портфолио</a><a href="#services">Что делаю</a><a href="#pricing">Стоимость</a><a href="#process">Как работаю</a><a href="#contact">Обсудить сайт <i class="brand-mark" aria-hidden="true"></i></a></nav></header>
+  <header class="header"><a class="logo" href="#home" aria-label="WEB точка — главная"><i class="brand-mark logo-brand-mark" aria-hidden="true"></i>WEB <span>точка</span><i class="logo-pixel" aria-hidden="true"></i><small>веб-студия</small></a><nav aria-label="Навигация"><a href="./works.html">Портфолио</a><a href="#services">Что делаю</a><a href="#pricing">Стоимость</a><a href="#process">Как работаю</a><a href="#contact">Обсудить сайт <i class="brand-mark" aria-hidden="true"></i></a></nav></header>
   <main id="home">
     <section class="hero"><div class="eyebrow hero-eyebrow"><span>Дизайн и разработка сайтов — От идеи до последней точки<span class="hero-tagline-dot">.</span></span></div><h1>Ваше дело.<br>Ваш сайт<span class="blue">.</span></h1><div class="hero-bottom"><p>Создаю сайты для бизнеса и частных специалистов. От первой идеи до запуска — на прямой связи со мной.</p><a class="button" href="#contact">Обсудить сайт <i class="brand-mark" aria-hidden="true"></i></a></div><div class="hero-art" aria-hidden="true"><div class="orbit"></div><div class="sphere"></div><div class="browser-card"><div class="browser-bar"><i></i><i></i><i></i><span>ваше-дело.рф</span></div><div class="browser-content"><span class="mini-label">ВАША ИДЕЯ В СЕТИ</span><strong>Есть дело.<br>Будет сайт.</strong><div class="mini-bottom"><span>Начнём? <i class="brand-mark" aria-hidden="true"></i></span><div class="mini-dot"></div></div></div></div><span class="art-label">Идея · форма · сайт</span></div><div class="hero-foot"><span>Личная веб-мастерская</span><a href="#services">Знакомимся ближе ↓</a></div></section>
     <section class="intro section"><p class="eyebrow">По делу</p><h2>У вас есть идея.<br>Помогу ей <em>обрести форму.</em></h2><p class="intro-text">Необязательно приходить с готовым техническим заданием. Разберёмся, кому нужен ваш сайт, что на нём рассказать и как сделать путь к заявке понятным.</p></section>
