@@ -31,7 +31,23 @@
     .orange { color: #ff9f1c; }
     .contact-links > span { color: #ff9f1c; }
     .contact-links { border-top-color: #ff9f1c; }
-    .contact h2 .brand-mark { animation: brand-pixel-loader 2s steps(1, end) infinite; }
+    .contact h2 .brand-mark {
+      display: inline-block;
+      width: 13px;
+      height: 13px;
+      margin-left: 6px;
+      vertical-align: 0.06em;
+      background-image: linear-gradient(var(--mark-main) 0 0), linear-gradient(color-mix(in srgb, var(--mark-main) 66%, var(--mark-soft)) 0 0), linear-gradient(color-mix(in srgb, var(--mark-main) 33%, var(--mark-soft)) 0 0), linear-gradient(var(--mark-soft) 0 0);
+      background-size: 5px 5px;
+      background-repeat: no-repeat;
+      animation: contact-pixel-loader 3.2s steps(1, end) infinite;
+    }
+    @keyframes contact-pixel-loader {
+      0%, 24.99% { background-position: 0 0, 0 8px, 8px 8px, 8px 0; }
+      25%, 49.99% { background-position: 8px 0, 0 0, 0 8px, 8px 8px; }
+      50%, 74.99% { background-position: 8px 8px, 8px 0, 0 0, 0 8px; }
+      75%, 100% { background-position: 0 8px, 8px 8px, 8px 0, 0 0; }
+    }
     @media (prefers-reduced-motion: reduce) {
       .contact h2 .brand-mark { animation: none; }
     }
