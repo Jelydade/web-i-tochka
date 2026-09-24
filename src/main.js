@@ -43,9 +43,15 @@ function setPromoDiscount(promo) {
 
   document.querySelectorAll('[data-extra-page-price]').forEach((price) => {
     const basePrice = Number(price.dataset.extraPagePrice);
-    price.textContent = promo
-      ? `+${formatRubles(Math.round(basePrice * (1 - promo.discountPercent / 100)))}`
-      : `+${formatRubles(basePrice)}`;
+    const discounted = price.parentElement.querySelector('[data-extra-page-discount]');
+    if (promo) {
+      price.classList.add('is-discounted');
+      discounted.textContent = `+${formatRubles(Math.round(basePrice * (1 - promo.discountPercent / 100)))}`;
+      discounted.hidden = false;
+    } else {
+      price.classList.remove('is-discounted');
+      discounted.hidden = true;
+    }
   });
 }
 
