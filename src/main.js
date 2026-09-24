@@ -29,3 +29,15 @@ form.addEventListener('submit', (event) => {
   event.preventDefault();
   window.location.href = destinations[method.value];
 });
+
+const previews = document.querySelectorAll('[data-project-preview]');
+
+previews.forEach((preview) => {
+  preview.addEventListener('click', () => {
+    previews.forEach((item) => {
+      const isSelected = item === preview;
+      item.classList.toggle('is-front', isSelected);
+      item.setAttribute('aria-pressed', String(isSelected));
+    });
+  });
+});
