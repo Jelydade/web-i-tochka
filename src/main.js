@@ -57,7 +57,6 @@ form.addEventListener('submit', (event) => {
 
   if (!name) { showError(form.elements.name, 'Напишите, как к вам обращаться'); firstInvalidField ??= form.elements.name; }
   if (!contact) { showError(form.elements.contact, 'Укажите удобный способ связи'); firstInvalidField ??= form.elements.contact; }
-  if (!brief) { showError(form.elements.brief, 'Коротко опишите задачу'); firstInvalidField ??= form.elements.brief; }
   if (!form.elements.consent.checked) { showError(form.elements.consent, 'Подтвердите согласие'); firstInvalidField ??= form.elements.consent; }
 
   if (firstInvalidField) {
