@@ -31,6 +31,10 @@
     .orange { color: #ff9f1c; }
     .contact-links > span { color: #ff9f1c; }
     .contact-links { border-top-color: #ff9f1c; }
+    .header nav a:last-child .brand-mark,
+    .hero .button .brand-mark,
+    .submit-button .brand-mark { --mark-main: #ff9f1c; --mark-soft: #f5c871; }
+    .header nav a:not(:last-child):hover { background: #fff0dc; color: #20211f; }
     .contact h2 .brand-mark {
       display: inline-block;
       width: 13px;
@@ -68,7 +72,7 @@
     <section class="contact section" id="contact"><p class="eyebrow">07 / Начнём с разговора</p><h2>Расскажите,<br>что у вас <span>за дело <i class="brand-mark" aria-hidden="true"></i></span></h2><div class="contact-bottom"><p>Пары предложений достаточно, чтобы начать.<br>Что вы делаете и для чего вам нужен сайт?</p><button class="button light" id="contact-open" type="button">Связаться <i class="brand-mark" aria-hidden="true"></i></button></div><div class="contact-links"><span>Напишите удобным способом</span><a href="mailto:N.chernovol1010@yandex.ru">Email</a><a href="https://t.me/chernovol_nv" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://wa.me/79284647374" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="https://max.ru/u/f9LHodD0cOIJakOmkmETSt2GN6HAnkfo0p6yajNODiDJUWj-zJ4P6Ed-5JU" target="_blank" rel="noopener noreferrer">MAX</a><a href="tel:+79284647374">Позвонить</a></div></section>
   </main>
   <footer><a class="logo" href="#home">WEB <span>точка</span><i class="logo-pixel" aria-hidden="true"></i><small>веб-студия</small></a><span>От идеи до последней точки.</span><a href="#home">Наверх ↑</a></footer>
-  <dialog id="contact-dialog"><form class="contact-form" id="contact-form"><button class="close" type="button" id="contact-close" aria-label="Закрыть">×</button><p class="eyebrow">Связаться</p><h2>Выберите<br>удобный способ.</h2><p class="dialog-intro">Откроется чат, письмо или набор номера — как вам удобнее.</p><label><span>Способ связи</span><select id="contact-method" name="contactMethod"><option value="telegram">Telegram</option><option value="whatsapp">WhatsApp</option><option value="max">MAX</option><option value="email">Email</option><option value="phone">Звонок</option></select></label><button class="button submit-button" type="submit">Связаться <i class="brand-mark" aria-hidden="true"></i></button><p class="dialog-note">Вы сразу перейдёте в выбранный сервис.</p></form></dialog>
+  <dialog id="contact-dialog"><form class="contact-form" id="contact-form"><button class="close" type="button" id="contact-close" aria-label="Закрыть">×</button><p class="eyebrow">Связаться</p><h2>Выберите<br>удобный способ<span class="blue">.</span></h2><p class="dialog-intro">Откроется чат, письмо или набор номера — как вам удобнее<span class="orange">.</span></p><label><span>Способ связи</span><select id="contact-method" name="contactMethod"><option value="telegram">Telegram</option><option value="whatsapp">WhatsApp</option><option value="max">MAX</option><option value="email">Email</option><option value="phone">Звонок</option></select></label><button class="button submit-button" type="submit">Связаться <i class="brand-mark" aria-hidden="true"></i></button><p class="dialog-note">Вы сразу перейдёте в выбранный сервис.</p></form></dialog>
   <script>window.PROMO_CONFIG={endpoint:"https://olcmgavijezfkbkzjxse.supabase.co/functions/v1/validate-promo",anonKey:"sb_publishable_oljoTSx8MPPwDINkW6Y9MQ_Rvo8sdnf"};</script>
   <script>if(location.protocol==='file:'){const script=document.createElement('script');script.src='./src/main.js';document.body.append(script)}</script>
   <script type="module" src="./src/main.js"></script>
