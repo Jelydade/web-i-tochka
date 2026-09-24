@@ -70,7 +70,6 @@ form.addEventListener('submit', (event) => {
     contact,
     contactMethod: data.get('contactMethod'),
     siteType: data.get('siteType'),
-    budget: data.get('budget'),
     brief,
     createdAt: new Date().toISOString(),
   };
@@ -81,7 +80,6 @@ form.addEventListener('submit', (event) => {
     `Имя: ${application.name}`,
     `Связь: ${application.contactMethod} — ${application.contact}`,
     `Тип сайта: ${application.siteType}`,
-    `Бюджет: ${application.budget}`,
     '',
     'Задача:',
     application.brief,
