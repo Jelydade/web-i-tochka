@@ -2,6 +2,8 @@ const dialog = document.querySelector('#brief-dialog');
 const form = document.querySelector('#brief-form');
 const success = document.querySelector('#form-success');
 const status = document.querySelector('#brief-status');
+const copyStatus = document.querySelector('#copy-status');
+let applicationMessage = '';
 
 function openDialog() {
   form.hidden = false;
@@ -12,6 +14,15 @@ function openDialog() {
 
 function closeDialog() {
   dialog.close();
+}
+
+async function copyApplication() {
+  try {
+    await navigator.clipboard.writeText(applicationMessage);
+    copyStatus.textContent = 'Текст заявки скопирован.';
+  } catch {
+    copyStatus.textContent = 'Не удалось скопировать автоматически. Выберите Email, Telegram или WhatsApp.';
+  }
 }
 
 function clearErrors() {
@@ -30,6 +41,8 @@ function showError(field, message) {
 document.querySelector('#brief-open').addEventListener('click', openDialog);
 document.querySelector('#brief-close').addEventListener('click', closeDialog);
 document.querySelector('#success-close').addEventListener('click', closeDialog);
+document.querySelector('#copy-application').addEventListener('click', copyApplication);
+document.querySelector('#send-max').addEventListener('click', () => { copyApplication(); });
 dialog.addEventListener('click', (event) => { if (event.target === dialog) closeDialog(); });
 
 form.addEventListener('submit', (event) => {
@@ -61,6 +74,25 @@ form.addEventListener('submit', (event) => {
     brief,
     createdAt: new Date().toISOString(),
   };
+
+  applicationMessage = [
+    'Новая заявка с сайта «web и точка.»',
+    '',
+    `Имя: ${application.name}`,
+    `Контакт: ${application.contact}`,
+    `Тип сайта: ${application.siteType}`,
+    `Бюджет: ${application.budget}`,
+    '',
+    'Задача:',
+    application.brief,
+  ].join('\n');
+
+  const encodedMessage = encodeURIComponent(applicationMessage);
+  const encodedSubject = encodeURIComponent(`Заявка на сайт — ${application.name}`);
+  document.querySelector('#send-email').href = `mailto:N.chernovol1010@yandex.ru?subject=${encodedSubject}&body=${encodedMessage}`;
+  document.querySelector('#send-telegram').href = `https://t.me/chernovol_nv?text=${encodedMessage}`;
+  document.querySelector('#send-whatsapp').href = `https://wa.me/79284647374?text=${encodedMessage}`;
+  copyStatus.textContent = '';
 
   localStorage.setItem('web-i-tochka-draft', JSON.stringify(application));
   form.hidden = true;
