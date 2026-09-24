@@ -69,6 +69,7 @@ form.addEventListener('submit', (event) => {
   const application = {
     name,
     contact,
+    contactMethod: data.get('contactMethod'),
     siteType: data.get('siteType'),
     budget: data.get('budget'),
     brief,
@@ -79,7 +80,7 @@ form.addEventListener('submit', (event) => {
     'Новая заявка с сайта «web и точка.»',
     '',
     `Имя: ${application.name}`,
-    `Контакт: ${application.contact}`,
+    `Связь: ${application.contactMethod} — ${application.contact}`,
     `Тип сайта: ${application.siteType}`,
     `Бюджет: ${application.budget}`,
     '',
