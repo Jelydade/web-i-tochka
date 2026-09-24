@@ -51,12 +51,10 @@ form.addEventListener('submit', (event) => {
 
   const data = new FormData(form);
   const name = data.get('name').trim();
-  const contact = data.get('contact').trim();
   const brief = data.get('brief').trim();
   let firstInvalidField = null;
 
   if (!name) { showError(form.elements.name, 'Напишите, как к вам обращаться'); firstInvalidField ??= form.elements.name; }
-  if (!contact) { showError(form.elements.contact, 'Укажите удобный способ связи'); firstInvalidField ??= form.elements.contact; }
   if (!form.elements.consent.checked) { showError(form.elements.consent, 'Подтвердите согласие'); firstInvalidField ??= form.elements.consent; }
 
   if (firstInvalidField) {
@@ -67,7 +65,6 @@ form.addEventListener('submit', (event) => {
 
   const application = {
     name,
-    contact,
     contactMethod: data.get('contactMethod'),
     siteType: data.get('siteType'),
     brief,
@@ -78,7 +75,7 @@ form.addEventListener('submit', (event) => {
     'Новая заявка с сайта «web и точка.»',
     '',
     `Имя: ${application.name}`,
-    `Связь: ${application.contactMethod} — ${application.contact}`,
+    `Способ связи: ${application.contactMethod}`,
     `Тип сайта: ${application.siteType}`,
     '',
     'Задача:',
