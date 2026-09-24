@@ -13,14 +13,17 @@
   <link rel="stylesheet" href="./src/form.css">
   <style>
     .header .logo-brand-mark {
-      --mark-main: var(--blue);
-      --mark-soft: #c7cffc;
+      --pixel-size: 6px;
+      --pixel-step: 10px;
+      background-image: linear-gradient(#304bff 0 0), linear-gradient(#7d8aff 0 0), linear-gradient(#9ad7e8 0 0), linear-gradient(#ff9f1c 0 0);
+      background-size: var(--pixel-size) var(--pixel-size);
+      background-repeat: no-repeat;
       display: inline-block;
       width: 17px;
       height: 17px;
       margin: 0 9px 0 0;
       vertical-align: -2px;
-      animation: brand-pixel-loader 4s steps(1, end) infinite;
+      animation: brand-pixel-loader 2.6s steps(1, end) infinite;
     }
     @media (prefers-reduced-motion: reduce) {
       .header .logo-brand-mark { animation: none; }
