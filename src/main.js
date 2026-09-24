@@ -33,11 +33,19 @@ form.addEventListener('submit', (event) => {
 const previews = document.querySelectorAll('[data-project-preview]');
 
 previews.forEach((preview) => {
-  preview.addEventListener('click', () => {
+  const showPreview = () => {
     previews.forEach((item) => {
       const isSelected = item === preview;
       item.classList.toggle('is-front', isSelected);
       item.setAttribute('aria-pressed', String(isSelected));
     });
+  };
+
+  preview.addEventListener('click', showPreview);
+  preview.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      showPreview();
+    }
   });
 });
