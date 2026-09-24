@@ -20,18 +20,21 @@ Deno.serve(async (request) => {
 
     const client = createClient(
       Deno.env.get('SUPABASE_URL') || '',
-      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '',
+      Deno.env.get('SUPABASE_ANON_KEY') || '',
     );
-    const { data, error } = await client.rpc('validate_promo_code', { input_code: normalizedCode }).single();
+    const { data, error } = await client
+      .rpc('validate_promo_code', { input_code: normalizedCode })
+      .limit(1)
+      .maybeSingle();
 
     if (error) throw error;
 
     return Response.json({
-      valid: data.valid,
-      code: data.code,
-      discountPercent: data.discount_percent,
-      expiresAt: data.expires_at,
-      message: data.message,
+      valid: data?.valid ?? false,
+      code: data?.code ?? null,
+      discountPercent: data?.discount_percent ?? null,
+      expiresAt: data?.expires_at ?? null,
+      message: data?.message ?? 'Промокод не найден.',
     }, { headers: corsHeaders });
   } catch (error) {
     return Response.json({ valid: false, message: 'Не удалось проверить промокод.' }, { status: 500, headers: corsHeaders });
