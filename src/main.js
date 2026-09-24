@@ -64,6 +64,7 @@ function showPromo(promo) {
     promoStatus.textContent = `Скидка ${promo.discountPercent}% применена до ${expiresAt}.`;
     promoStatus.classList.remove('is-error');
     promoForm.querySelector('[data-promo-reset]').hidden = false;
+    promoForm.querySelector('.promo-submit').classList.remove('is-error');
     promoForm.querySelector('.promo-submit').classList.add('is-clicked');
   });
   setPromoDiscount(promo);
@@ -77,7 +78,7 @@ function clearPromo() {
     promoStatus.textContent = '';
     promoStatus.classList.remove('is-error');
     promoForm.querySelector('[data-promo-reset]').hidden = true;
-    promoForm.querySelector('.promo-submit').classList.remove('is-clicked');
+    promoForm.querySelector('.promo-submit').classList.remove('is-clicked', 'is-error');
   });
   setPromoDiscount(null);
 }
@@ -114,7 +115,7 @@ promoForms.forEach((promoForm) => {
 
   promoCode.addEventListener('input', () => {
     promoCode.value = promoCode.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 5);
-    promoForm.querySelector('.promo-submit').classList.remove('is-clicked');
+    promoForm.querySelector('.promo-submit').classList.remove('is-clicked', 'is-error');
   });
 
   promoForm.addEventListener('submit', async (event) => {
@@ -125,12 +126,14 @@ promoForms.forEach((promoForm) => {
     if (!/^[A-Z0-9]{5}$/.test(code)) {
       promoStatus.textContent = 'Введите код из 5 латинских букв и цифр.';
       promoStatus.classList.add('is-error');
+      promoForm.querySelector('.promo-submit').classList.add('is-error');
       return;
     }
 
     if (!promoConfig.endpoint || !promoConfig.anonKey) {
       promoStatus.textContent = 'Проверка промокодов скоро будет подключена.';
       promoStatus.classList.add('is-error');
+      promoForm.querySelector('.promo-submit').classList.add('is-error');
       return;
     }
 
@@ -163,6 +166,7 @@ promoForms.forEach((promoForm) => {
     } catch (error) {
       promoStatus.textContent = error.message || 'Не удалось проверить промокод. Попробуйте ещё раз.';
       promoStatus.classList.add('is-error');
+      promoForm.querySelector('.promo-submit').classList.add('is-error');
     }
   });
 
