@@ -3,6 +3,7 @@ const form = document.querySelector('#contact-form');
 const method = document.querySelector('#contact-method');
 const promoForms = document.querySelectorAll('[data-promo-form]');
 const promoConfig = window.PROMO_CONFIG || { endpoint: '', anonKey: '' };
+let appliedPromo = null;
 
 const destinations = {
   telegram: 'https://t.me/chernovol_nv',
@@ -49,11 +50,7 @@ function setPromoDiscount(promo) {
 }
 
 function activePromo() {
-  try {
-    return JSON.parse(sessionStorage.getItem('web-i-tochka-promo') || 'null');
-  } catch {
-    return null;
-  }
+  return appliedPromo;
 }
 
 function showPromo(promo) {
@@ -71,7 +68,7 @@ function showPromo(promo) {
 }
 
 function clearPromo() {
-  sessionStorage.removeItem('web-i-tochka-promo');
+  appliedPromo = null;
   promoForms.forEach((promoForm) => {
     promoForm.querySelector('[data-promo-code]').value = '';
     const promoStatus = promoForm.querySelector('[data-promo-status]');
@@ -161,7 +158,7 @@ promoForms.forEach((promoForm) => {
         discountPercent: result.discountPercent,
         expiresAt: result.expiresAt,
       };
-      sessionStorage.setItem('web-i-tochka-promo', JSON.stringify(promo));
+      appliedPromo = promo;
       showPromo(promo);
     } catch (error) {
       promoStatus.textContent = error.message || 'Не удалось проверить промокод. Попробуйте ещё раз.';
@@ -173,12 +170,7 @@ promoForms.forEach((promoForm) => {
   promoReset.addEventListener('click', clearPromo);
 });
 
-const savedPromo = activePromo();
-if (savedPromo && new Date(savedPromo.expiresAt) > new Date()) {
-  showPromo(savedPromo);
-} else {
-  clearPromo();
-}
+clearPromo();
 
 const previews = document.querySelectorAll('[data-project-preview]');
 
