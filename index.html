@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="WEB точка. — создание сайтов для бизнеса и частных специалистов. Структура, дизайн, разработка и запуск.">
   <title>WEB точка. — веб-студия</title><link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="stylesheet" href="./src/style.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="./src/sections.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="./src/teaser-redesign.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="./src/form.css" media="print" onload="this.media='all'">
   <!-- homepage-styles -->
   <style>
     .header .logo-brand-mark,
@@ -181,6 +185,7 @@
   <footer><a class="logo" href="#home"><i class="brand-mark footer-brand-mark" aria-hidden="true"></i>WEB <span>точка</span><i class="logo-pixel" aria-hidden="true"></i><small>веб-студия</small></a><span class="footer-tagline">Дизайн и разработка сайтов — От идеи до последней точки<span class="orange">.</span></span><a href="#home">Наверх ↑</a></footer>
   <dialog id="contact-dialog"><form class="contact-form" id="contact-form"><button class="close" type="button" id="contact-close" aria-label="Закрыть">×</button><p class="eyebrow">Связаться</p><h2>Выберите<br>удобный способ<span class="blue">.</span></h2><p class="dialog-intro">Откроется чат, письмо или набор номера — как вам удобнее<span class="orange">.</span></p><label><span>Способ связи</span><select id="contact-method" name="contactMethod"><option value="telegram">Telegram</option><option value="whatsapp">WhatsApp</option><option value="max">MAX</option><option value="email">Email</option><option value="phone">Звонок</option></select></label><button class="button submit-button" type="submit">Связаться <i class="brand-mark" aria-hidden="true"></i></button><p class="dialog-note">Вы сразу перейдёте в выбранный сервис.</p></form></dialog>
   <script>window.PROMO_CONFIG={endpoint:"https://olcmgavijezfkbkzjxse.supabase.co/functions/v1/validate-promo",anonKey:"sb_publishable_oljoTSx8MPPwDINkW6Y9MQ_Rvo8sdnf"};</script>
-  <!-- Diagnostic test: main JavaScript temporarily disabled. -->
+  <script>if(location.protocol==='file:'){const script=document.createElement('script');script.src='./src/main.js';document.body.append(script)}</script>
+  <script type="module" src="./src/main.js"></script>
 </body>
 </html>
