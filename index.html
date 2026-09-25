@@ -91,6 +91,19 @@
       footer .footer-tagline { display: block; max-width: 310px; font-size: 9px; line-height: 1.5; letter-spacing: 1.15px; }
       footer > a:last-child { justify-self: end; font-size: 12px; }
     }
+    @media (max-width: 640px) and (prefers-reduced-motion: no-preference) {
+      .header .logo-brand-mark,
+      footer .footer-brand-mark {
+        -webkit-animation: brand-pixel-loader 2.6s steps(1, end) infinite;
+        animation: brand-pixel-loader 2.6s steps(1, end) infinite;
+        will-change: background-position;
+      }
+      :where(a, button) .brand-mark {
+        -webkit-animation: brand-pixel-loader 2s steps(1, end) infinite;
+        animation: brand-pixel-loader 2s steps(1, end) infinite;
+        will-change: background-position;
+      }
+    }
   </style>
 </head>
 <body>
