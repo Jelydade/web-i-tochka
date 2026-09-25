@@ -148,6 +148,28 @@
       .preview-card__label strong { font-size: 20px; }
       .preview-card__label em { padding: 6px 8px; font-size: 8px; }
     }
+    .works-stage { display: grid; grid-template-columns: repeat(2, minmax(0, 340px)); justify-content: center; align-items: start; gap: 22px; height: 430px; padding: 48px 7% 94px; }
+    .works-stage .preview-card,
+    .works-stage .preview-card.is-front,
+    .works-stage .preview-card:not(.is-front) { position: relative; inset: auto; width: 100%; height: 250px; left: auto; top: auto; transform: none; }
+    .works-stage:hover .preview-card,
+    .works-stage:hover .preview-card.is-front,
+    .works-stage:hover .preview-card:not(.is-front) { transform: translateY(-6px); }
+    .works-stage__cta { right: 7%; bottom: 18px; width: 94px; height: 94px; font-size: 10px; }
+    .works-stage__note { left: 7%; bottom: 28px; }
+    @media (max-width: 640px) {
+      .works-stage { display: flex; justify-content: flex-start; gap: 14px; height: 370px; margin-top: 35px; padding: 35px 20px 92px; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; }
+      .works-stage::-webkit-scrollbar { display: none; }
+      .works-stage .preview-card,
+      .works-stage .preview-card.is-front,
+      .works-stage .preview-card:not(.is-front) { flex: 0 0 218px; height: 220px; scroll-snap-align: start; }
+      .works-stage:hover .preview-card,
+      .works-stage:hover .preview-card.is-front,
+      .works-stage:hover .preview-card:not(.is-front) { transform: none; }
+      .works-stage__cta { right: 16px; bottom: 13px; width: 78px; height: 78px; font-size: 9px; }
+      .works-stage__cta .brand-mark { margin-top: 5px; }
+      .works-stage__note { left: 20px; bottom: 29px; max-width: 155px; }
+    }
   </style>
 </head>
 <body>
