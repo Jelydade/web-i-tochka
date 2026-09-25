@@ -46,6 +46,7 @@
     .faq details.is-closing summary span { color: var(--blue); transform: rotate(0); }
     .header nav a:last-child .brand-mark,
     .header nav a:last-child:hover .brand-mark { --mark-main: #ff9f1c !important; --mark-soft: #9ca9ff !important; }
+    .header-cta-short { display: none; }
     .hero .button .brand-mark,
     .submit-button .brand-mark { --mark-main: #ff9f1c; --mark-soft: #9ca9ff; }
     .works-stage { z-index: 0; }
@@ -111,11 +112,15 @@
     }
     @media (max-width: 640px) {
       body { overflow-x: hidden; }
-      .header { position: sticky; align-items: center; }
-      .header .logo { font-size: 20px; }
-      .header nav { padding-top: 3px; padding-right: 0; }
-      .header nav a:not(:last-child) { padding: 9px 11px; font-size: 11px; }
-      .header nav a:last-child { position: absolute; top: 14px; right: 6%; padding: 10px 11px; font-size: 11px; }
+      .header { position: sticky; display: block; min-height: 116px; padding: 14px 6% 10px; }
+      .header .logo { display: inline-flex; align-items: center; font-size: 20px; line-height: 1; }
+      .header .logo-brand-mark { margin-right: 7px; }
+      .header nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; margin-top: 18px; padding: 0; gap: 4px; overflow: visible; }
+      .header nav a:not(:last-child) { display: flex; align-items: center; justify-content: center; min-width: 0; padding: 8px 2px; border-radius: 0; border-bottom: 1px solid #dcded6; background: transparent; font-size: 10px; line-height: 1.1; white-space: nowrap; }
+      .header nav a:not(:last-child):hover { background: transparent; color: var(--blue); }
+      .header nav a:last-child { position: absolute; top: 11px; right: 6%; display: inline-flex; padding: 9px 10px; border-radius: 4px; font-size: 10px; line-height: 1; box-shadow: 0 3px 10px #304bff33; }
+      .header nav a:last-child .header-cta-full { display: none; }
+      .header nav a:last-child .header-cta-short { display: inline; }
       .contact-links { display: grid; grid-template-columns: repeat(5, max-content); gap: 13px 11px; align-items: center; margin-top: 38px; }
       .contact-links > span { grid-column: 1 / -1; margin: 0; }
       .contact-links a { white-space: nowrap; font-size: 11px; }
@@ -131,7 +136,9 @@
     }
     @media (max-width: 360px) {
       .header .logo { font-size: 19px; }
-      .header nav a:last-child { padding: 9px 9px; font-size: 10px; }
+      .header nav { gap: 2px; }
+      .header nav a:not(:last-child) { font-size: 9px; }
+      .header nav a:last-child { padding: 8px 8px; font-size: 9px; }
     }
     .preview-card { color: #f7f7f2; text-decoration: none; }
     .preview-card__label { position: absolute; z-index: 2; left: 22px; bottom: 20px; display: flex; flex-direction: column; align-items: flex-start; gap: 5px; text-shadow: 0 2px 16px #111a; }
@@ -171,7 +178,7 @@
   </style>
 </head>
 <body>
-  <header class="header"><a class="logo" href="#home" aria-label="WEB точка — главная"><i class="brand-mark logo-brand-mark" aria-hidden="true"></i>WEB <span>точка</span><i class="logo-pixel" aria-hidden="true"></i><small>веб-студия</small></a><nav aria-label="Навигация"><a href="./works.html">Портфолио</a><a href="#services">Что делаю</a><a href="#pricing">Стоимость</a><a href="#process">Как работаю</a><a href="#contact">Обсудить сайт <i class="brand-mark" aria-hidden="true"></i></a></nav></header>
+  <header class="header"><a class="logo" href="#home" aria-label="WEB точка — главная"><i class="brand-mark logo-brand-mark" aria-hidden="true"></i>WEB <span>точка</span><i class="logo-pixel" aria-hidden="true"></i><small>веб-студия</small></a><nav aria-label="Навигация"><a href="./works.html">Портфолио</a><a href="#services">Что делаю</a><a href="#pricing">Стоимость</a><a href="#process">Как работаю</a><a href="#contact"><span class="header-cta-full">Обсудить сайт</span><span class="header-cta-short">Обсудить</span> <i class="brand-mark" aria-hidden="true"></i></a></nav></header>
   <main id="home">
     <section class="hero"><div class="eyebrow hero-eyebrow"><span>Дизайн и разработка сайтов — От идеи до последней точки<span class="hero-tagline-dot">.</span></span></div><h1>Ваше дело<span class="orange">.</span><br>Ваш сайт<span class="blue">.</span></h1><div class="hero-bottom"><p>Создаю сайты для бизнеса и частных специалистов. От первой идеи до запуска — на прямой связи со мной.</p><a class="button" href="#contact">Обсудить сайт <i class="brand-mark" aria-hidden="true"></i></a></div><div class="hero-art" aria-hidden="true"><div class="orbit"></div><div class="sphere"></div><div class="browser-card"><div class="browser-bar"><i></i><i></i><i></i><span>ваше-дело.рф</span></div><div class="browser-content"><span class="mini-label">ВАША ИДЕЯ В СЕТИ</span><strong>Есть дело.<br>Будет сайт.</strong><div class="mini-bottom"><span>Начнём? <i class="brand-mark" aria-hidden="true"></i></span><div class="mini-dot"></div></div></div></div><span class="art-label">Идея · форма · сайт</span></div><div class="hero-foot"><span>Личная веб-мастерская</span><a href="#services">Знакомимся ближе ↓</a></div></section>
     <section class="intro section"><p class="eyebrow">По делу</p><h2>У вас есть идея<span class="blue">.</span><br>Помогу ей <em>обрести форму</em><span class="orange">.</span></h2><p class="intro-text">Необязательно приходить с готовым техническим заданием. Разберёмся, кому нужен ваш сайт, что на нём рассказать и как сделать путь к заявке понятным.</p></section>
