@@ -11,6 +11,7 @@ export default defineConfig({
         main: resolve(projectRoot, 'index.html'),
         works: resolve(projectRoot, 'works.html'),
         diagnostic: resolve(projectRoot, 'diagnostic.html'),
+        diagnosticCss: resolve(projectRoot, 'diagnostic-css.html'),
       },
     },
   },
