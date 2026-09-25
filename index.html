@@ -33,7 +33,7 @@
     .orange { color: #ff9f1c; }
     .contact-links > span { color: #ff9f1c; }
     .contact-links { border-top-color: #ff9f1c; }
-    .header { z-index: 20; }
+    .header { z-index: 1000; isolation: isolate; }
     .footer-tagline {
       color: #72766e;
       font-size: 11px;
@@ -46,9 +46,10 @@
     .faq summary span { transition: color .3s ease, transform .35s cubic-bezier(.22, .8, .3, 1); }
     .faq details.is-closing summary span { color: var(--blue); transform: rotate(0); }
     .header nav a:last-child .brand-mark,
+    .header nav a:last-child:hover .brand-mark { --mark-main: #ff9f1c !important; --mark-soft: #9ca9ff !important; }
     .hero .button .brand-mark,
     .submit-button .brand-mark { --mark-main: #ff9f1c; --mark-soft: #9ca9ff; }
-    .header nav a:last-child:hover .brand-mark { --mark-main: #ff9f1c; --mark-soft: #9ca9ff; }
+    .works-stage { z-index: 0; }
     .header nav a:not(:last-child):hover { background: #ffc36a; color: #20211f; }
     .contact h2 .brand-mark {
       display: inline-block;
