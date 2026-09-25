@@ -4,9 +4,8 @@ import { fileURLToPath } from 'node:url';
 
 const projectRoot = fileURLToPath(new URL('.', import.meta.url));
 export default defineConfig({
-  // GitHub Pages publishes this repository below /web-i-tochka/.
-  // Other hosts (Vercel and regular hosting) serve it from the domain root.
-  base: process.env.GITHUB_ACTIONS === 'true' ? '/web-i-tochka/' : '/',
+  // Relative asset URLs work both on the project preview URL and on a custom domain.
+  base: './',
   build: {
     rollupOptions: {
       input: {
