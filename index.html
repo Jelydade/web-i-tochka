@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="WEB точка. — создание сайтов для бизнеса и частных специалистов. Структура, дизайн, разработка и запуск.">
   <title>WEB точка. — веб-студия</title><link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="stylesheet" href="./src/style.css">
   <link rel="stylesheet" href="./src/sections.css">
   <link rel="stylesheet" href="./src/portfolio.css">
@@ -103,6 +106,36 @@
         animation: brand-pixel-loader 2s steps(1, end) infinite;
         will-change: background-position;
       }
+    }
+    @keyframes mobile-pixel-orbit {
+      0%, 24.99% { background-position: 0 0, 0 8px, 8px 8px, 8px 0; }
+      25%, 49.99% { background-position: 8px 0, 0 0, 0 8px, 8px 8px; }
+      50%, 74.99% { background-position: 8px 8px, 8px 0, 0 0, 0 8px; }
+      75%, 100% { background-position: 0 8px, 8px 8px, 8px 0, 0 0; }
+    }
+    @media (max-width: 640px) {
+      body { overflow-x: hidden; }
+      .header { position: sticky; align-items: center; }
+      .header .logo { font-size: 20px; }
+      .header nav { padding-top: 3px; padding-right: 0; }
+      .header nav a:not(:last-child) { padding: 9px 11px; font-size: 11px; }
+      .header nav a:last-child { position: absolute; top: 14px; right: 6%; padding: 10px 11px; font-size: 11px; }
+      .contact-links { display: grid; grid-template-columns: repeat(5, max-content); gap: 13px 11px; align-items: center; margin-top: 38px; }
+      .contact-links > span { grid-column: 1 / -1; margin: 0; }
+      .contact-links a { white-space: nowrap; font-size: 11px; }
+      footer { min-height: 0; height: auto; align-content: start; }
+      footer .footer-tagline { max-width: none; white-space: nowrap; font-size: 7.3px; line-height: 1.25; letter-spacing: .72px; }
+      .header .logo-brand-mark,
+      footer .footer-brand-mark,
+      :where(a, button) .brand-mark {
+        -webkit-animation: mobile-pixel-orbit 3.2s steps(1, end) infinite !important;
+        animation: mobile-pixel-orbit 3.2s steps(1, end) infinite !important;
+        will-change: background-position;
+      }
+    }
+    @media (max-width: 360px) {
+      .header .logo { font-size: 19px; }
+      .header nav a:last-child { padding: 9px 9px; font-size: 10px; }
     }
   </style>
 </head>
