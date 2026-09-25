@@ -178,26 +178,6 @@ promoForms.forEach((promoForm) => {
 
 clearPromo();
 
-const previews = document.querySelectorAll('[data-project-preview]');
-
-previews.forEach((preview) => {
-  const showPreview = () => {
-    previews.forEach((item) => {
-      const isSelected = item === preview;
-      item.classList.toggle('is-front', isSelected);
-      item.setAttribute('aria-pressed', String(isSelected));
-    });
-  };
-
-  preview.addEventListener('click', showPreview);
-  preview.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      showPreview();
-    }
-  });
-});
-
 document.querySelectorAll('.faq details').forEach((item) => {
   const summary = item.querySelector('summary');
   let animation = null;
