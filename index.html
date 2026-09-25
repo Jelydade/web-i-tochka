@@ -72,6 +72,25 @@
       .contact h2 .brand-mark { animation: none; }
     }
     .about .about-copy li > span { color: #ff9f1c; }
+    @media (max-width: 1040px) {
+      .header { height: auto; min-height: 90px; flex-wrap: wrap; gap: 10px 24px; padding-top: 14px; padding-bottom: 12px; }
+      .header nav { order: 2; flex: 1 0 100%; width: 100%; overflow-x: auto; justify-content: flex-start; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+      .header nav::-webkit-scrollbar { display: none; }
+      .header nav a { flex: 0 0 auto; }
+      footer { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px 24px; align-items: center; }
+      footer .footer-tagline { display: block; grid-column: 1 / -1; grid-row: 2; max-width: 42rem; }
+    }
+    @media (max-width: 640px) {
+      .header { min-height: 0; padding: 14px 6% 12px; gap: 12px; }
+      .header .logo { font-size: 24px; }
+      .header nav { gap: 7px; padding: 2px 0 0; }
+      .header nav a:not(:last-child) { display: inline-flex; padding: 9px 12px; background: #edeee7; font-size: 12px; }
+      .header nav a:last-child { padding: 10px 13px; font-size: 12px; }
+      .hero-eyebrow { max-width: 310px; margin-bottom: 22px; font-size: 9px; line-height: 1.45; letter-spacing: 1.15px; }
+      footer { padding: 30px 6%; gap: 18px; }
+      footer .footer-tagline { display: block; max-width: 310px; font-size: 9px; line-height: 1.5; letter-spacing: 1.15px; }
+      footer > a:last-child { justify-self: end; font-size: 12px; }
+    }
   </style>
 </head>
 <body>
