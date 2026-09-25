@@ -5,11 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="WEB точка. — создание сайтов для бизнеса и частных специалистов. Структура, дизайн, разработка и запуск.">
   <title>WEB точка. — веб-студия</title><link rel="icon" type="image/svg+xml" href="./favicon.svg">
-  <link rel="stylesheet" href="./src/style.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="./src/sections.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="./src/teaser-redesign.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="./src/form.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="./src/style.css" media="print" data-deferred-style>
+  <link rel="stylesheet" href="./src/sections.css" media="print" data-deferred-style>
+  <link rel="stylesheet" href="./src/teaser-redesign.css" media="print" data-deferred-style>
+  <link rel="stylesheet" href="./src/form.css" media="print" data-deferred-style>
   <!-- homepage-styles -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.setTimeout(() => document.querySelectorAll('[data-deferred-style]').forEach((style) => { style.media = 'all'; }), 60);
+    });
+  </script>
   <style>
     .header .logo-brand-mark,
     footer .footer-brand-mark {
