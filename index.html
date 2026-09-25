@@ -93,6 +93,24 @@
       footer { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px 24px; align-items: center; }
       footer .footer-tagline { display: block; grid-column: 1 / -1; grid-row: 2; max-width: 42rem; }
     }
+    /* Keep the desktop header on one line right down to tablet widths. */
+    @media (min-width: 641px) and (max-width: 1100px) {
+      .header { display: flex; height: 84px; min-height: 84px; flex-wrap: nowrap; align-items: center; gap: 14px; padding: 0 4%; }
+      .header .logo { flex: 0 0 auto; font-size: 24px; }
+      .header .logo small { display: none; }
+      .header nav { order: 0; flex: 0 1 auto; width: max-content; max-width: calc(100% - 145px); overflow: visible; justify-content: flex-end; gap: 2px; padding: 3px; }
+      .header nav a { flex: 0 1 auto; padding: 9px 10px; font-size: 12px; white-space: nowrap; }
+      .header nav a:last-child { padding: 10px 11px; }
+    }
+    @media (min-width: 641px) and (max-width: 800px) {
+      .header { height: 72px; min-height: 72px; gap: 8px; padding: 0 3%; }
+      .header .logo { font-size: 19px; }
+      .header nav { gap: 0; padding: 2px; }
+      .header nav a { padding: 8px 5px; font-size: 9px; }
+      .header nav a:last-child { padding: 8px 7px; font-size: 9px; }
+      .header nav a:last-child .header-cta-full { display: none; }
+      .header nav a:last-child .header-cta-short { display: inline; }
+    }
     @media (max-width: 640px) {
       .header { min-height: 0; padding: 14px 6% 12px; gap: 12px; }
       .header .logo { font-size: 24px; }
