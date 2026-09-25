@@ -13,14 +13,14 @@
   <style>
     .header .logo-brand-mark,
     footer .footer-brand-mark {
-      --pixel-size: 7px;
-      --pixel-step: 11px;
+      --pixel-size: 9px;
+      --pixel-step: 13px;
       background-image: linear-gradient(#304bff 0 0), linear-gradient(#7d8aff 0 0), linear-gradient(#9ad7e8 0 0), linear-gradient(#ff9f1c 0 0);
       background-size: var(--pixel-size) var(--pixel-size);
       background-repeat: no-repeat;
       display: inline-block;
-      width: 18px;
-      height: 18px;
+      width: 22px;
+      height: 22px;
       margin: 0 9px 0 0;
       vertical-align: 0;
       animation: brand-pixel-loader 2.6s steps(1, end) infinite;
@@ -35,10 +35,17 @@
     .header { z-index: 1000; isolation: isolate; }
     .header .logo,
     footer .logo { display: inline-flex; align-items: center; }
+    .header .logo-brand-mark,
+    footer .footer-brand-mark {
+      --pixel-size: .36em;
+      --pixel-step: .55em;
+      width: .91em;
+      height: .91em;
+    }
     .header .logo > span,
-    footer .logo > span { margin-left: .16em; }
+    footer .logo > span { margin-left: .24em; }
     .header .logo-pixel,
-    footer .logo-pixel { position: relative; top: .13em; flex: none; }
+    footer .logo-pixel { position: relative; top: .20em; flex: none; }
     .footer-tagline {
       color: #72766e;
       font-size: 11px;
