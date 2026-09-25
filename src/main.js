@@ -178,6 +178,26 @@ promoForms.forEach((promoForm) => {
 
 clearPromo();
 
+document.querySelectorAll('.works-slider').forEach((slider) => {
+  const track = slider.querySelector('.works-slider__track');
+  const slides = [...slider.querySelectorAll('.preview-card')];
+  const previous = slider.querySelector('[data-works-prev]');
+  const next = slider.querySelector('[data-works-next]');
+  const indexLabel = slider.querySelector('[data-works-index]');
+  let current = 0;
+
+  const showSlide = (index) => {
+    current = (index + slides.length) % slides.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    slides.forEach((slide, slideIndex) => slide.classList.toggle('is-front', slideIndex === current));
+    indexLabel.textContent = String(current + 1).padStart(2, '0');
+  };
+
+  previous.addEventListener('click', () => showSlide(current - 1));
+  next.addEventListener('click', () => showSlide(current + 1));
+  showSlide(0);
+});
+
 document.querySelectorAll('.faq details').forEach((item) => {
   const summary = item.querySelector('summary');
   let animation = null;
