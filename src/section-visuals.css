@@ -56,6 +56,30 @@
   transform: translateX(29%) rotate(9deg);
 }
 
+#process .steps {
+  display: grid;
+  gap: 10px;
+}
+
+#process .steps article {
+  padding: 18px clamp(12px, 2vw, 24px);
+  border: 1px solid #dfe1da;
+  border-radius: 12px;
+  background: #fff;
+}
+
+#process .steps article:nth-child(2) { background: #eef0ff; }
+#process .steps article:nth-child(3) { background: #e7f3f6; }
+#process .steps article:nth-child(4) { background: #fff2df; }
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  #process .steps article { transition: transform .2s ease, box-shadow .2s ease; }
+  #process .steps article:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px #20211f14;
+  }
+}
+
 .steps .step-marker {
   display: grid;
   justify-items: center;
@@ -65,16 +89,62 @@
 }
 
 .step-marker i {
-  width: 18px;
-  height: 14px;
-  border: 1px solid currentColor;
+  --frame: #7781a6;
+  --paper: #fff;
+  --ink: #7781a6;
+  --photo: #d3d9eb;
+  --cta: #abb5d5;
+  display: block;
+  width: 30px;
+  height: 23px;
+  border: 1px solid var(--frame);
   border-radius: 4px;
-  background: linear-gradient(currentColor, currentColor) center / 8px 1px no-repeat;
+  background:
+    linear-gradient(var(--ink), var(--ink)) 4px 5px / 8px 2px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) 4px 9px / 6px 1px no-repeat,
+    linear-gradient(var(--cta), var(--cta)) 4px 14px / 8px 3px no-repeat,
+    linear-gradient(145deg, transparent 48%, var(--photo) 49% 66%, transparent 67%) 15px 5px / 9px 12px no-repeat,
+    var(--paper);
 }
 
-.steps article:nth-child(2) .step-marker i { border-style: dashed; }
-.steps article:nth-child(3) .step-marker i { background-color: #dfe3ff; }
-.steps article:nth-child(4) .step-marker i { border-color: #ff9f1c; background-color: #ffddaa; }
+.steps article:nth-child(1) .step-marker i {
+  border-style: dashed;
+  transform: rotate(-7deg);
+}
+
+.steps article:nth-child(2) .step-marker i {
+  --paper: #eef0ff;
+  --frame: #8998e5;
+  --photo: #8998e5;
+}
+
+.steps article:nth-child(3) .step-marker i,
+.steps article:nth-child(4) .step-marker i {
+  --frame: #304bff;
+  --paper: #304bff;
+  --ink: #fff;
+  --photo: #9ad7e8;
+  --cta: #ffbd61;
+}
+
+.steps article:nth-child(4) .step-marker i {
+  position: relative;
+}
+
+.steps article:nth-child(4) .step-marker i::after {
+  content: "✓";
+  position: absolute;
+  right: -4px;
+  bottom: -3px;
+  display: grid;
+  width: 11px;
+  height: 11px;
+  place-items: center;
+  border-radius: 50%;
+  background: #ffbd61;
+  color: #20211f;
+  font: normal 700 8px/1 sans-serif;
+}
 
 .desk-art { margin-top: 30px; }
 .desk-art .art-window:first-child { border-style: dashed; transform: rotate(-8deg); }
