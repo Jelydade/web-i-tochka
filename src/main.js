@@ -2,7 +2,7 @@ const dialog = document.querySelector('#contact-dialog');
 const form = document.querySelector('#contact-form');
 const method = document.querySelector('#contact-method');
 const promoForms = document.querySelectorAll('[data-promo-form]');
-const promoConfig = window.PROMO_CONFIG || { endpoint: '', anonKey: '' };
+const promo = { code: '3E69G', discountPercent: 20 };
 let appliedPromo = null;
 
 const destinations = {
@@ -60,11 +60,10 @@ function activePromo() {
 }
 
 function showPromo(promo) {
-  const expiresAt = new Intl.DateTimeFormat('ru-RU', { dateStyle: 'long' }).format(new Date(promo.expiresAt));
   promoForms.forEach((promoForm) => {
     promoForm.querySelector('[data-promo-code]').value = promo.code;
     const promoStatus = promoForm.querySelector('[data-promo-status]');
-    promoStatus.textContent = `Скидка ${promo.discountPercent}% применена до ${expiresAt}.`;
+    promoStatus.textContent = `Скидка ${promo.discountPercent}% применена.`;
     promoStatus.classList.remove('is-error');
     promoForm.querySelector('[data-promo-reset]').hidden = false;
     promoForm.querySelector('.promo-submit').classList.remove('is-error');
@@ -121,7 +120,7 @@ promoForms.forEach((promoForm) => {
     promoForm.querySelector('.promo-submit').classList.remove('is-clicked', 'is-error');
   });
 
-  promoForm.addEventListener('submit', async (event) => {
+  promoForm.addEventListener('submit', (event) => {
     event.preventDefault();
     promoForm.querySelector('.promo-submit').classList.add('is-clicked');
     const code = promoCode.value.trim();
@@ -133,44 +132,15 @@ promoForms.forEach((promoForm) => {
       return;
     }
 
-    if (!promoConfig.endpoint || !promoConfig.anonKey) {
-      promoStatus.textContent = 'Проверка промокодов скоро будет подключена.';
+    if (code !== promo.code) {
+      promoStatus.textContent = 'Промокод не найден.';
       promoStatus.classList.add('is-error');
       promoForm.querySelector('.promo-submit').classList.add('is-error');
       return;
     }
 
-    promoStatus.textContent = 'Проверяем промокод…';
-    promoStatus.classList.remove('is-error');
-
-    try {
-      const response = await fetch(promoConfig.endpoint, {
-        method: 'POST',
-        headers: {
-          apikey: promoConfig.anonKey,
-          Authorization: `Bearer ${promoConfig.anonKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ code }),
-      });
-      const result = await response.json();
-
-      if (!response.ok || !result.valid) {
-        throw new Error(result.message || 'Промокод не найден или больше не действует.');
-      }
-
-      const promo = {
-        code: result.code,
-        discountPercent: result.discountPercent,
-        expiresAt: result.expiresAt,
-      };
-      appliedPromo = promo;
-      showPromo(promo);
-    } catch (error) {
-      promoStatus.textContent = error.message || 'Не удалось проверить промокод. Попробуйте ещё раз.';
-      promoStatus.classList.add('is-error');
-      promoForm.querySelector('.promo-submit').classList.add('is-error');
-    }
+    appliedPromo = promo;
+    showPromo(promo);
   });
 
   promoReset.addEventListener('click', clearPromo);
