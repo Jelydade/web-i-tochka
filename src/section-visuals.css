@@ -84,12 +84,18 @@
   transform: translate(30%, 12%) rotate(7deg);
 }
 
-.contact-action { flex: 0 1 270px; }
+.contact-action {
+  flex: 0 1 220px;
+  width: min(100%, 220px);
+}
 .contact-action #contact-open {
-  display: inline-flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  width: min(100%, 220px);
+  width: fit-content;
+  max-width: 100%;
+  gap: 12px;
+  margin-inline: auto;
   min-width: 0;
   padding: 8px 8px 8px 18px;
   border: 0;
@@ -110,6 +116,11 @@
   background: var(--blue);
   color: #fff;
   font-size: 13px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .contact-action #contact-open::after {
+    animation: contact-arrow-nudge 2s ease-in-out infinite;
+  }
 }
 .message-art {
   display: grid;
