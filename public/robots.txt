@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /diagnostic.html
+Disallow: /diagnostic-css.html
+
+Sitemap: https://webtochka-studio.ru/sitemap.xml
