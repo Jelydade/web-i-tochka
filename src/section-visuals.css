@@ -175,10 +175,9 @@
   font-weight: 600;
 }
 .contact-action #contact-open:hover { background: #e0e5ff; }
-.contact-action #contact-open .brand-mark { display: none; }
-.contact-action #contact-open::after {
-  content: "➤" / "";
+.contact-action #contact-open .header-cta-arrow {
   display: grid;
+  margin-left: 0;
   width: 34px;
   height: 34px;
   place-items: center;
@@ -186,11 +185,6 @@
   background: var(--blue);
   color: #fff;
   font-size: 13px;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .contact-action #contact-open::after {
-    animation: contact-arrow-nudge 2s ease-in-out infinite;
-  }
 }
 .message-art {
   display: grid;

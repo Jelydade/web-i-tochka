@@ -13,5 +13,9 @@
 
 @keyframes contact-arrow-nudge {
   0%, 18%, 36%, 100% { transform: translateX(0); }
-  9%, 27% { transform: translateX(5px); }
+  9%, 27% { transform: translateX(var(--contact-arrow-travel, 5px)); }
+}
+
+@media (max-width: 640px) {
+  .header-cta-arrow { --contact-arrow-travel: 7px; }
 }
